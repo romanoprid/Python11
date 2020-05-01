@@ -41,21 +41,19 @@ class ClubManagerUtils:
         """
         Test of correct sorting list by price ascending
         >>> sorted_list_by_amount_increase = ClubManagerUtils.sort_goods_by_amount(list_of_goods_to_test , SortingType.INCREASE)
-        >>> [hockey_puck. for hockey_puck in sorted_list_by_amount_increase]
-        [1, 2, 3, 4]
+        >>> [good.amount for good in sorted_list_by_amount_increase]
+        [1260, 2300, 3450, 7500]
 
         Test of correct sorting list by price descending
-        >>> sorted_list_by_amount_decrease = ClubManagerUtils.sort_goods_by_price_in_ukrainian_hryvnas(list_of_goods_to_test, SortingType.DECREASE)
-        >>> [hockey_puck. for hockey_puck in sorted_list_by_amount_decrease]
-        [4, 3, 2, 1]
+        >>> sorted_list_by_amount_decrease = ClubManagerUtils.sort_goods_by_amount(list_of_goods_to_test, SortingType.DECREASE)
+        >>> [good.amount for good in sorted_list_by_amount_decrease]
+        [7500, 3450, 2300, 1260]
         """
         sorted_list_of_goods_by_amount: List[HockeyPuck] = []
         if sorting == SortingType.INCREASE:
-            sorted_list_of_goods_by_amount = \
-                sorted(hockey_puck, key=lambda good: good.price_in_ukrainian_hryvnas)
+            sorted_list_of_goods_by_amount = sorted(hockey_puck, key=lambda good: good.amount)
         elif sorting == SortingType.DECREASE:
-            sorted_list_of_goods_by_amount = \
-                sorted(hockey_puck, key=lambda good: good.price_in_ukrainian_hryvnas, reverse=True)
+            sorted_list_of_goods_by_amount = sorted(hockey_puck, key=lambda good: good.amount, reverse=True)
         return sorted_list_of_goods_by_amount
 
 

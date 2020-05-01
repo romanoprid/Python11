@@ -34,5 +34,5 @@ class Good(ABC):
         self.producer = producer
         self.producing_country = producing_country
         self.material = material
-        self.country_code = amount
+        self.amount = amount
         self.purpose = purpose
