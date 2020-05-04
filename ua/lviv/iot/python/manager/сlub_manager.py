@@ -11,27 +11,7 @@ from ua.lviv.iot.python.model.uniform import Uniform
 
 
 class ClubManager:
-    # global doctest
 
-    # def __init__(self):
-    #     self.goods = list()
-    #
-    # def find_goods_for_some_purpose(self, purpose=Purpose.GOALKEEPER):
-    #     """
-    #         >>> manager = ClubManager(); manager.goods.append(HockeyPuck()); manager.goods.append(IceSkates())\
-    #         ;manager.goods.append(ProtectiveClothes()); manager.goods.append(Uniform())\
-    #         ;print(manager.find_goods_for_some_purpose(Purpose.GOALKEEPER))
-    #         [HockeyPuck{name:HockeyPuck, price_in_ukrainian_hryvnas:200,\
-    #         producer:North, producing country:UA}, Ice Skates{name:Ice Skates, price_in_ukrainian_hryvnas:200, producer:South, producing country:UK}, Protective Clothes{name:Protective Clothes, price_in_ukrainian_hryvnas:250, producer:North, producing country:USA}, Uniform{name:Uniform, price_in_ukrainian_hryvnas:130, producer:Lion, producing country:UA}]
-    #         >>> print(manager.find_goods_for_some_purpose(Purpose.GOALKEEPER))
-    #         [HockeyPuck{name:HockeyPuck, price_in_ukrainian_hryvnas:200, producer:North, producing country:UA}, Ice Skates{name:Ice Skates, price_in_ukrainian_hryvnas:200, producer:South, producing country:UK}, Protective Clothes{name:Protective Clothes, price_in_ukrainian_hryvnas:250, producer:North, producing country:USA}, Uniform{name:Uniform, price_in_ukrainian_hryvnas:130, producer:Lion, producing country:UA}]
-    #     """
-    #
-    #     suitable = list()
-    #     for good in self.goods:
-    #         if good.purpose.__contains__(purpose):
-    #             suitable.append(good)
-    #     return suitable
     def __init__(self):
         self.list_of_goods: List[Good] = []
 
@@ -39,8 +19,10 @@ class ClubManager:
         """
         Test of correct founding goods by name in the list
         >>> club_manager = ClubManager()
-        >>> club_manager.list_of_goods.append(HockeyPuck("HockeyPuck",200,"North","UA","Ruber",Purpose.GOALKEEPER,2))
-        >>> club_manager.list_of_goods.append(HockeyPuck("HockeyPuck",150,"South","USA","Wood",Purpose.GOALKEEPER,2))
+        >>> club_manager.list_of_goods.append(HockeyPuck("HockeyPuck",200,"North","UA","Ruber",245,Purpose.GOALKEEPER,
+        ... 2))
+        >>> club_manager.list_of_goods.append(HockeyPuck("HockeyPuck",150,"South","USA","Wood",3450,Purpose.GOALKEEPER,
+        ... 2))
         >>> list_of_founded_goods_by_name = club_manager.find_goods_by_name("HockeyPuck")
         >>> len(list_of_founded_goods_by_name)
         2
@@ -55,11 +37,13 @@ class ClubManager:
         """
         Test of correct founding goods by producer in the list
         >>> club_manager = ClubManager()
-        >>> club_manager.list_of_goods.append(ProtectiveClothes("Coat",1500,"Lion","UK","Leather",Purpose.FIELDPLAYER,
-        ... Level.HIGH))
-        >>> club_manager.list_of_goods.append(IceSkates("Ice skates",300,"Grenland","UA","Leather",Purpose.FIELDPLAYER,
-        ... 45))
+        >>> club_manager.list_of_goods.append(ProtectiveClothes("Coat",1500,"Lion","UK","Leather",2000,
+        ... Purpose.FIELDPLAYER, Level.HIGH))
+        >>> club_manager.list_of_goods.append(IceSkates("Ice skates",300,"Grenland","UA","Leather",3456,
+        ... Purpose.FIELDPLAYER, 45))
         >>> list_of_founded_goods_by_producer = club_manager.find_goods_by_producer("Lion")
+        >>> len(list_of_founded_goods_by_producer)
+        1
         """
         list_of_founded_goods: List[Good] = []
         for good in self.list_of_goods:
