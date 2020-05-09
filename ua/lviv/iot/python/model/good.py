@@ -3,7 +3,7 @@ from abc import ABC
 from ua.lviv.iot.python.model.purpose import Purpose
 
 
-class Good(ABC):
+class Good:
 
     def __init__(self, name: str, price_in_ukrainian_hryvnas: float, producer: str, producing_country: str,
                  material: str, amount: float,
